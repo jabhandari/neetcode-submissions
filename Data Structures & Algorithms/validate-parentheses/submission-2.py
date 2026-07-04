@@ -1,0 +1,21 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack=[]
+        check={
+            ')':'(',
+            ']':'[',
+            '}':'{'
+        }
+        for c in s:
+            if c in check: #if its a closing paranthesis
+                if stack and stack[-1]==check[c]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(c)
+        if not stack:
+            return True
+        else:
+            return False
+            
